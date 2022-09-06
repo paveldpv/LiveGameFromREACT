@@ -7,14 +7,15 @@ import Title from './Title'
 export default function LiveGame() {
   return (
     <div className='wrappeer'>
-      <Title/>
-
+      <Title />
       <div className='gridContaineer'>
-         <Rules/>
-         <div className='game'>
-            <Control/>
-            <Cell/>
-         </div>
+        <Rules />
+
+        <div className='game'>
+          <Control />
+          <Cell />
+        </div>
+
       </div>
     </div>
   )
