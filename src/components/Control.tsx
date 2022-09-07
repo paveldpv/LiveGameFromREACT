@@ -35,13 +35,31 @@ export default function Control({
           </button>
         </div>
         <div>
-          <button>очистить поле</button>
-          <button>сетка 15*15 размер 1 </button>
-          <button>сетка 15*15 размер 2 </button>
-          <button>сетка 15*15 размер 3 </button>
-          <button>сетка 15*15 полный размер </button>
-          <button>сетка 30*30 полный размер </button>
-          <button>сетка 50*50 полный размер </button>
+          <button
+          value="Clear Grid">
+            очистить поле
+          </button>
+          <button
+          value="Default Grid 1">
+            сетка 15*15 размер 1
+           </button>
+          <button
+          value="Default Grid 2">
+            сетка 15*15 размер 2 
+          </button>
+          <button
+          value="Default Grid 3">
+            сетка 15*15 размер 3
+          </button>
+          <button>
+            сетка 15*15 полный размер
+          </button>
+          <button>
+            сетка 30*30 полный размер
+          </button>
+          <button>
+            сетка 50*50 полный размер
+           </button>
         </div>
       </div>
 

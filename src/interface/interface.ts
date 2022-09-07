@@ -1,7 +1,7 @@
 
 export interface cell{
    coordianteX:number,
-   coorfinateY:number,
+   coordinateY:number,
    alive:boolean,
    click:boolean,
    id:number
