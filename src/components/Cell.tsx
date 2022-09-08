@@ -1,23 +1,31 @@
-import React from 'react'
-import { GridCell } from '../interface/interface'
+import { gridView } from '../function/gridView';
+import { GridCell,cell } from '../interface/interface'
+
 //{grid,gridSize,toogle,clicable}
 
-export const Cell:React.FC =()=>{
+interface cellProps{
+   grid:any,
+   gridSize:number
+}
 
+export const Cell =({grid,gridSize}:cellProps)=>{
+   
+   console.log(typeof gridSize);
+   
+   
    return(
-      <div className='grid'>
-         cell
-         {/* {grid.map(core=>{
-            return(
-               <div
-               key={core.id}
-               className={core.alive?`live`:`dead`}
-               onClick={clicable?toogle:null}               
-               >
-
-               </div>
-            )
-         })} */}
+      <div className='containerLiveGame'>
+         <div className='grid' style={gridView(gridSize)}>
+            {grid.map((core:cell)=>{
+               return(
+                  <div
+                  key={core.id}
+                  className={core.alive?`live`:`dead`}         
+                  >
+                  </div>
+               )
+            })}
+         </div>
       </div>
    )
 }

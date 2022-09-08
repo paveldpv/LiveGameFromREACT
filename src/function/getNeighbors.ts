@@ -13,9 +13,9 @@ export const getNeighbors = (cell:number,gridWigth:number,gridHeight:number)=>{
    let size:number = gridHeight*gridHeight
    
 
-   north = cell+gridWigth
+   north = cell+gridWigth+1
 
-   south = cell-gridWigth
+   south = cell-gridWigth-1
 
    northWest = north+1
 

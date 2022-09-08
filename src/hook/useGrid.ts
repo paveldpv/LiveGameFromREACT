@@ -11,19 +11,22 @@ export const useGrid=()=>{
    const [speed,setSpeed]=useState('')//?0?
    const [gridSize,setGridSize]=useState(15)
 
-   const crateRandomGrid= useCallback((num:number)=>{
+   const createRandomGrid= useCallback((num:number)=>{
       
       const numberCellofGrid:number= num*num;
-      const randomGrid:any=[]
+      let randomGrid:any=[]
 
       for (let i = 0; i <numberCellofGrid ; i++) {
-         randomGrid.push({alive:Math.round(Math.random()),id:i})    
+         randomGrid = [...randomGrid, { alive: Math.round(Math.random()), id: i }];
       }
+      console.log(randomGrid);
+      
       setGeneration(0);
       setGrid(randomGrid)
    },[])
 
    const nextStepAuto=()=>{
+      console.log(`function`);
       let validGrid:boolean=false
      
       let nextGeneration:[cell]|any = grid.map((cell,i)=>{
@@ -120,6 +123,7 @@ export const useGrid=()=>{
       gridSize,setGridSize,
       speed,setSpeed,
       nextStepAuto,
-      setButtonGrid
+      setButtonGrid,
+      createRandomGrid
    ]
 }

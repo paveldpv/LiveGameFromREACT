@@ -1,11 +1,22 @@
+import { useGrid } from '../hook/useGrid'
 
 import Control from './Control'
 import { Cell } from './Cell'
 import Rules from './Rules'
 import Title from './Title'
 
-export default function LiveGame() {
 
+
+export default function LiveGame() {
+  const [grid,setGrid,
+    generation,setGeneration,
+    clicable,setClicable,
+    gridSize,setGridSize,
+    speed,setSpeed,
+    nextStepAuto,
+    setButtonGrid,
+    createRandomGrid]=useGrid()
+  
   return (
     <div className='wrappeer'>
       <Title />
@@ -13,8 +24,13 @@ export default function LiveGame() {
         <Rules />
 
         <div className='game'>
-          <Control />
-          <Cell />
+          <Control
+           nextStepAuto={nextStepAuto} 
+           createRandomGrid={createRandomGrid} 
+           clicable={clicable}
+           setGridSize={setGridSize}/>
+          
+          <Cell grid={grid} gridSize={Number(gridSize)} />
         </div>
 
       </div>

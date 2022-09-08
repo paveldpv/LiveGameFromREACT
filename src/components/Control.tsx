@@ -1,17 +1,23 @@
-import React from 'react'
+import {cell} from './../interface/interface'
 
-export default function Control({
-  speedInput,
-  setSpeedInput,
-  stepThrougAuto,
-  clicable,
-  setClicable
+interface controlProps{
+  nextStepAuto:any,
+  createRandomGrid:any,
+  clicable:any,
+  setGridSize:any
+}
 
-}: any) {
+
+
+export default function Control({ 
+  nextStepAuto,createRandomGrid,clicable,setGridSize
+}: controlProps) {
 
   const generationOne = (e: React.MouseEvent) => {
     e.preventDefault();
-    stepThrougAuto()
+    console.log(`first generation`);
+    
+    
   }
 
 
@@ -23,15 +29,14 @@ export default function Control({
         <div>
           <button
             onClick={generationOne}>
-            сгенерировать первое поколение
+            сгенерировать следущее поколение
           </button>
           <input type="number"
             placeholder='скорость в м\с'
-            value={speedInput}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setSpeedInput(e.target.value)} />
-          <button
-            onClick={() => setClicable((prev: boolean) => !prev)}>
-            {clicable ? `старт` : `стоп`}
+           
+            />
+          <button>
+            старт
           </button>
         </div>
         <div>
@@ -51,13 +56,25 @@ export default function Control({
           value="Default Grid 3">
             сетка 15*15 размер 3
           </button>
-          <button>
+          <button
+          onClick={clicable? ()=>{
+            setGridSize(15)
+            createRandomGrid(15)}:null}
+          >
             сетка 15*15 полный размер
           </button>
-          <button>
+          <button
+          onClick={clicable? ()=>{
+            setGridSize(30)
+            createRandomGrid(30)}:null}
+          >
             сетка 30*30 полный размер
           </button>
-          <button>
+          <button
+          onClick={clicable? ()=>{
+            setGridSize(50)
+            createRandomGrid(50)}:null}
+          >
             сетка 50*50 полный размер
            </button>
         </div>
