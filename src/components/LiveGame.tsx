@@ -14,9 +14,10 @@ export default function LiveGame() {
     gridSize,setGridSize,
     speed,setSpeed,
     nextStepAuto,
-    setButtonGrid,
+    setButtonGridDefaulth,
     createRandomGrid]=useGrid()
-  
+    
+    
   return (
     <div className='wrappeer'>
       <Title />
@@ -26,10 +27,11 @@ export default function LiveGame() {
         <div className='game'>
           <Control
            nextStepAuto={nextStepAuto} 
-           createRandomGrid={createRandomGrid} 
+           createRandomGrid={()=>createRandomGrid} 
            clicable={clicable}
-           setGridSize={setGridSize}/>
-          
+           setGridSize={setGridSize}
+           setButtonGridDefaulth={setButtonGridDefaulth}/>  
+
           <Cell grid={grid} gridSize={Number(gridSize)} />
         </div>
 

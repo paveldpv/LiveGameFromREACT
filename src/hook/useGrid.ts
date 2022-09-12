@@ -4,6 +4,9 @@ import {useState,useEffect,useRef,useCallback}from 'react';
 import {defaultGrid1,defaultGrid2,defaultGrid3,defaultGrid4}from './../default-state-cell/default-state-cell';
 import { getNeighbors } from '../function/getNeighbors';
 
+
+
+
 export const useGrid=()=>{
    const [grid,setGrid]=useState(defaultGrid1);
    const [generation,setGeneration]=useState(0);
@@ -11,51 +14,66 @@ export const useGrid=()=>{
    const [speed,setSpeed]=useState('')//?0?
    const [gridSize,setGridSize]=useState(15)
 
+   
+
+
    const createRandomGrid= useCallback((num:number)=>{
+
       
       const numberCellofGrid:number= num*num;
       let randomGrid:any=[]
-
+      
       for (let i = 0; i <numberCellofGrid ; i++) {
-         randomGrid = [...randomGrid, { alive: Math.round(Math.random()), id: i }];
+         randomGrid = [...randomGrid, { alive: Boolean(Math.round(Math.random())), id: i }];
       }
       console.log(randomGrid);
       
       setGeneration(0);
       setGrid(randomGrid)
    },[])
-
+   
+   
    const nextStepAuto=()=>{
-      console.log(`function`);
+      
       let validGrid:boolean=false
+      
      
       let nextGeneration:[cell]|any = grid.map((cell,i)=>{
          let counterLivingNeighbors:number=0
 
-         let neighbors = getNeighbors(i,gridSize,gridSize)
-        
+         let neighbors = getNeighbors(i,gridSize,gridSize)        
+         
+         
          if(grid[neighbors.northWest].alive){
+                       
             counterLivingNeighbors++
          }
          if(grid[neighbors.north].alive){
+              
             counterLivingNeighbors++
          }
          if(grid[neighbors.northEast].alive){
+            
             counterLivingNeighbors++
          }
          if(grid[neighbors.west].alive){
+             
             counterLivingNeighbors++
          }
          if(grid[neighbors.east].alive){
+            
             counterLivingNeighbors++
          }
          if(grid[neighbors.southWest].alive){
+               
             counterLivingNeighbors++
          }
          if(grid[neighbors.south].alive){
+            
             counterLivingNeighbors++
          }
          if(grid[neighbors.southEast].alive){
+               
             counterLivingNeighbors++
          }
 
@@ -65,29 +83,32 @@ export const useGrid=()=>{
          }
          if(cell.alive&&(counterLivingNeighbors<=2||counterLivingNeighbors>=4)){
             validGrid= true
-            return{...cell,alive:false}
+            return{...cell,alive:!cell.alive}
          }
          if(!cell.alive&&counterLivingNeighbors==3){
             validGrid=true
-            return{...cell,alive:true}
+            return{...cell,alive:!cell.alive}
          }
-
-         if(validGrid){
-            setGeneration(prev=>prev++)
-         }
-         else{
-            setClicable(true)
-            return alert(`game over`)
-         }
+         return cell
+         
 
          
       })
+      
+      if(validGrid){
+         setGeneration(prev=>prev++)
+      }
+      else{
+         setClicable(true)
+         return alert(`game over`)
+      }
+      
       setGrid(nextGeneration)
    }
 
 
 
-   const setButtonGrid=(e:any)=>{
+   const setButtonGridDefaulth=(e:any)=>{
       e.preventDefault()
       switch(e.target.value){
          case "Clear Grid":
@@ -123,7 +144,7 @@ export const useGrid=()=>{
       gridSize,setGridSize,
       speed,setSpeed,
       nextStepAuto,
-      setButtonGrid,
+      setButtonGridDefaulth,
       createRandomGrid
    ]
 }

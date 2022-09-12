@@ -2,24 +2,29 @@ import {cell} from './../interface/interface'
 
 interface controlProps{
   nextStepAuto:any,
-  createRandomGrid:any,
+  createRandomGrid:(size:number)=>void,
   clicable:any,
-  setGridSize:any
+  setGridSize:any,
+  setButtonGridDefaulth:any
 }
 
 
 
 export default function Control({ 
-  nextStepAuto,createRandomGrid,clicable,setGridSize
+  nextStepAuto,createRandomGrid,clicable,setGridSize,setButtonGridDefaulth
 }: controlProps) {
+
 
   const generationOne = (e: React.MouseEvent) => {
     e.preventDefault();
-    console.log(`first generation`);
-    
-    
+    console.log(`first generation`);    
+    nextStepAuto()
   }
 
+  const createInitialGrid =(size:number)=>{
+    setGridSize(size);
+    createRandomGrid(size)
+  }
 
 
   return (
@@ -32,8 +37,7 @@ export default function Control({
             сгенерировать следущее поколение
           </button>
           <input type="number"
-            placeholder='скорость в м\с'
-           
+            placeholder='скорость в м\с'           
             />
           <button>
             старт
@@ -41,39 +45,23 @@ export default function Control({
         </div>
         <div>
           <button
+          onClick={(e)=>setButtonGridDefaulth(e)}
           value="Clear Grid">
             очистить поле
           </button>
+          
           <button
-          value="Default Grid 1">
-            сетка 15*15 размер 1
-           </button>
-          <button
-          value="Default Grid 2">
-            сетка 15*15 размер 2 
-          </button>
-          <button
-          value="Default Grid 3">
-            сетка 15*15 размер 3
-          </button>
-          <button
-          onClick={clicable? ()=>{
-            setGridSize(15)
-            createRandomGrid(15)}:null}
+          onClick={()=>createInitialGrid(15)}
           >
             сетка 15*15 полный размер
           </button>
           <button
-          onClick={clicable? ()=>{
-            setGridSize(30)
-            createRandomGrid(30)}:null}
+          onClick={()=>createInitialGrid(30)}
           >
             сетка 30*30 полный размер
           </button>
           <button
-          onClick={clicable? ()=>{
-            setGridSize(50)
-            createRandomGrid(50)}:null}
+          onClick={()=>createInitialGrid(50)}
           >
             сетка 50*50 полный размер
            </button>
