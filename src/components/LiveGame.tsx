@@ -1,4 +1,5 @@
 import { useGrid } from '../hook/useGrid'
+import { useInterval } from '../hook/useInterval'
 
 import Control from './Control'
 import { Cell } from './Cell'
@@ -17,6 +18,7 @@ export default function LiveGame() {
     setButtonGridDefaulth,
     createRandomGrid]=useGrid()
     
+    useInterval(Number(speed),nextStepAuto,grid,clicable)
     
     
   return (
@@ -26,12 +28,15 @@ export default function LiveGame() {
         <Rules />
 
         <div className='game'>
+
           <Control
            nextStepAuto={nextStepAuto} 
            createRandomGrid={createRandomGrid} 
            clicable={clicable}
            setGridSize={setGridSize}
-           setButtonGridDefaulth={setButtonGridDefaulth}/>  
+           setButtonGridDefaulth={setButtonGridDefaulth}
+           setSpeed={setSpeed}
+           setClicable={setClicable}/>  
 
           <Cell grid={grid} gridSize={Number(gridSize)} />
         </div>

@@ -5,13 +5,16 @@ interface controlProps{
   createRandomGrid:any,
   clicable:any,
   setGridSize:any,
-  setButtonGridDefaulth:any
+  setButtonGridDefaulth:any,
+  setSpeed:any,
+  setClicable:any
+
 }
 
 
 
 export default function Control({ 
-  nextStepAuto,createRandomGrid,clicable,setGridSize,setButtonGridDefaulth
+  nextStepAuto,createRandomGrid,clicable,setGridSize,setButtonGridDefaulth,setSpeed,setClicable
 }: controlProps) {
 
 
@@ -37,10 +40,13 @@ export default function Control({
             сгенерировать следущее поколение
           </button>
           <input type="number"
-            placeholder='скорость в м\с'           
+            placeholder='скорость в м\с'
+            onChange={(e)=>setSpeed(e.target.value)}           
             />
-          <button>
-            старт
+          <button
+          onClick={()=>setClicable((prev:boolean)=>!prev)}
+          >
+            {clicable?`старт`:`стоп`}
           </button>
         </div>
         <div>
