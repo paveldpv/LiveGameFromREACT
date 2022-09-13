@@ -2,7 +2,7 @@ import {cell} from './../interface/interface'
 
 interface controlProps{
   nextStepAuto:any,
-  createRandomGrid:(size:number)=>void,
+  createRandomGrid:any,
   clicable:any,
   setGridSize:any,
   setButtonGridDefaulth:any

@@ -18,6 +18,7 @@ export default function LiveGame() {
     createRandomGrid]=useGrid()
     
     
+    
   return (
     <div className='wrappeer'>
       <Title />
@@ -27,7 +28,7 @@ export default function LiveGame() {
         <div className='game'>
           <Control
            nextStepAuto={nextStepAuto} 
-           createRandomGrid={()=>createRandomGrid} 
+           createRandomGrid={createRandomGrid} 
            clicable={clicable}
            setGridSize={setGridSize}
            setButtonGridDefaulth={setButtonGridDefaulth}/>  
