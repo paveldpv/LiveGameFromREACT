@@ -1,9 +1,9 @@
-import {cell} from './../interface/interface'
+
 
 interface controlProps{
-  nextStepAuto:any,
-  createRandomGrid:any,
-  clicable:any,
+  nextStepAuto:()=>void,
+  createRandomGrid:(size:number)=>void,
+  clicable:boolean,
   setGridSize:any,
   setButtonGridDefaulth:any,
   setSpeed:any,

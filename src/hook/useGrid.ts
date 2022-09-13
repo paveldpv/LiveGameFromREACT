@@ -8,19 +8,19 @@ import { getNeighbors } from '../function/getNeighbors';
 
 
 export const useGrid=()=>{
-   const [grid,setGrid]=useState(defaultGrid1);
-   const [generation,setGeneration]=useState(0);
-   const [clicable,setClicable]=useState(true);
-   const [speed,setSpeed]=useState('')//?0?
-   const [gridSize,setGridSize]=useState(15)
+   const [grid,setGrid]=useState<cell[]>(defaultGrid1);
+   const [generation,setGeneration]=useState<number>(0);
+   const [clicable,setClicable]=useState<boolean>(true);
+   const [speed,setSpeed]=useState<number>(500)//по умолчанию скорость распростронения реакции 500
+   const [gridSize,setGridSize]=useState<number>(15)
 
    
 
 
-   const createRandomGrid= useCallback((num:number)=>{
+   const createRandomGrid:((size:number)=>void)= useCallback((num:number)=>{
 
       
-      const numberCellofGrid:number= num*num;
+      const numberCellofGrid= num*num;
       let randomGrid:any=[]
       
       for (let i = 0; i <numberCellofGrid ; i++) {
@@ -33,7 +33,7 @@ export const useGrid=()=>{
    },[])
    
    
-   const nextStepAuto=()=>{
+   const nextStepAuto:(()=>void)=()=>{
       
       let validGrid:boolean=false
       
@@ -108,7 +108,7 @@ export const useGrid=()=>{
 
 
 
-   const setButtonGridDefaulth=(e:any)=>{
+   const setButtonGridDefaulth:((e:any)=>void)=(e)=>{
       e.preventDefault()
       switch(e.target.value){
          case "Clear Grid":
@@ -137,14 +137,25 @@ export const useGrid=()=>{
       
    }
 
-   return[
+   // return [
+   //    grid,setGrid,
+   //    generation,setGeneration,
+   //    clicable,setClicable,
+   //    gridSize,setGridSize,
+   //    speed,setSpeed,
+   //    nextStepAuto,
+   //    setButtonGridDefaulth,
+   //    createRandomGrid
+   // ]
+   return{
       grid,setGrid,
-      generation,setGeneration,
-      clicable,setClicable,
-      gridSize,setGridSize,
-      speed,setSpeed,
-      nextStepAuto,
-      setButtonGridDefaulth,
-      createRandomGrid
-   ]
+       generation,setGeneration,
+       clicable,setClicable,
+       gridSize,setGridSize,
+       speed,setSpeed,
+       nextStepAuto,
+       setButtonGridDefaulth,
+       createRandomGrid
+   }
+
 }

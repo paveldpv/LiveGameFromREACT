@@ -8,9 +8,3 @@ export interface cell{
 }
 
 
-export interface GridCell{
-   grid:cell[],
-   toogle:any,
-   clicable:any,
-   gridSize:number
-}

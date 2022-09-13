@@ -1,5 +1,5 @@
 import { gridView } from '../function/gridView';
-import { GridCell,cell } from '../interface/interface'
+import { cell } from '../interface/interface'
 
 //{grid,gridSize,toogle,clicable}
 

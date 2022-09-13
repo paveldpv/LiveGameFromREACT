@@ -9,16 +9,17 @@ import Title from './Title'
 
 
 export default function LiveGame() {
-  const [grid,setGrid,
+  const {grid,setGrid,
     generation,setGeneration,
     clicable,setClicable,
     gridSize,setGridSize,
     speed,setSpeed,
     nextStepAuto,
     setButtonGridDefaulth,
-    createRandomGrid]=useGrid()
+    createRandomGrid}=useGrid()
     
     useInterval(Number(speed),nextStepAuto,grid,clicable)
+    
     
     
   return (
