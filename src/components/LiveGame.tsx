@@ -9,8 +9,7 @@ import Title from './Title'
 
 
 export default function LiveGame() {
-  const {grid,setGrid,
-    generation,setGeneration,
+  const {grid,    
     clicable,setClicable,
     gridSize,setGridSize,
     speed,setSpeed,

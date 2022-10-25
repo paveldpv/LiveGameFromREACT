@@ -1,13 +1,13 @@
-
+import React from "react"
 
 interface controlProps{
   nextStepAuto:()=>void,
   createRandomGrid:(size:number)=>void,
   clicable:boolean,
-  setGridSize:any,
-  setButtonGridDefaulth:any,
-  setSpeed:any,
-  setClicable:any
+  setGridSize:React.Dispatch<React.SetStateAction<number>>,
+  setButtonGridDefaulth:(e:any)=>void,
+  setSpeed:React.Dispatch<React.SetStateAction<number>>,
+  setClicable:React.Dispatch<React.SetStateAction<boolean>>
 
 }
 
@@ -41,7 +41,7 @@ export default function Control({
           </button>
           <input type="number"
             placeholder='скорость в м\с'
-            onChange={(e)=>setSpeed(e.target.value)}           
+            onChange={(e)=>setSpeed(Number(e.target.value))}           
             />
           <button
           onClick={()=>setClicable((prev:boolean)=>!prev)}

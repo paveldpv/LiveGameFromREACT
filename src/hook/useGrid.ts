@@ -137,16 +137,7 @@ export const useGrid=()=>{
       
    }
 
-   // return [
-   //    grid,setGrid,
-   //    generation,setGeneration,
-   //    clicable,setClicable,
-   //    gridSize,setGridSize,
-   //    speed,setSpeed,
-   //    nextStepAuto,
-   //    setButtonGridDefaulth,
-   //    createRandomGrid
-   // ]
+  
    return{
       grid,setGrid,
        generation,setGeneration,

@@ -4,7 +4,7 @@ import { cell } from '../interface/interface'
 //{grid,gridSize,toogle,clicable}
 
 interface cellProps{
-   grid:any,
+   grid:cell[],
    gridSize:number
 }
 
